@@ -1,0 +1,44 @@
+
+<div id="container">	
+	        <div class="product-details">
+            
+        <h1>{{productDetails.title }}</h1>
+
+        <div class="rating">
+            <span class="fa fa-star {{ productDetails.rating >= 1 ? 'checked' : '' }}"></span>
+            <span class="fa fa-star {{ productDetails.rating >= 2 ? 'checked' : '' }}"></span>
+            <span class="fa fa-star {{ productDetails.rating >= 3 ? 'checked' : '' }}"></span>
+            <span class="fa fa-star {{ productDetails.rating >= 4 ? 'checked' : '' }}"></span>
+            @if(productDetails.rating>=4.5){
+            <span class="fa fa-star checked "></span>
+            }
+            @else{
+            <span class="fa fa-star-half checked"></span>
+            }
+            <p >{{productDetails.category}}</p>
+
+          </div>
+            
+        
+            <p class="information">{{productDetails.description }}</p>
+        	<button class="btn">
+                     <span class="price">49 $</span>
+                   <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                   <span class="buy">Buy Now</span>
+                 </button>
+     
+    </div>
+            
+        
+               
+  <div class="product-image">
+        
+        <img src= {{productDetails.images[0]}} alt="Omar Dsoky">
+        
+  </div>
+
+      
+    </div>
+    
+    
+    
