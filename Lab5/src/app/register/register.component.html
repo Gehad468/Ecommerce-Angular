@@ -1,0 +1,77 @@
+
+<form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="name" formControlName="name">
+            @if(registerForm.controls['name']&&registerForm.controls['name'].touched)
+            {
+            <div id="namehelp" class="form-text text-danger">
+                @if(registerForm.controls['name'].errors?.['required']){
+                <span>the field is required</span>
+                }
+            </div>
+            }
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="username" formControlName="username"  pattern="[^\s]*">
+            @if(registerForm.controls['username']&&registerForm.controls['username'].touched)
+            {
+            <div id="usernamehelp" class="form-text text-danger">
+                @if(registerForm.controls['username'].errors?.['required']){
+                <span>the field is required</span>
+                }
+                @if(registerForm.controls['username'].errors?.['pattern']){
+                    <span>you should not write space</span>
+                    }
+
+            </div>
+            }
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="email" formControlName="email">
+            @if(registerForm.controls['email']&&registerForm.controls['email'].touched)
+            {
+            <div id="emailhelp" class="form-text text-danger">
+                @if(registerForm.controls['email'].errors?.['required']){
+                <span>the field is required</span>
+                }
+                @if(registerForm.controls['email'].errors?.['pattern'])
+                {
+                <span>pattern is wrong</span>
+                }
+            </div>
+            }
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                name="password" formControlName="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                @if(registerForm.controls['password']&&registerForm.controls['password'].touched)
+                {
+                <div id="passwordhelp" class="form-text text-danger">
+                    @if(registerForm.controls['password'].errors?.['required']){
+                    <span>the field is required</span>
+                    }
+                    @if(registerForm.controls['password'].errors?.['pattern']){
+                    <span>pattern is wrong</span>
+                    }
+                </div>
+            }
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="confirmpassword" id="confirmPassword"
+                placeholder="Confirm Password" formControlName="confirmpassword">
+                @if(registerForm.controls['confirmpassword']&&registerForm.controls['confirmpassword'].touched)
+                {
+                    <div id="confirmpasswordhelp" class="form-text text-danger">
+                        @if(registerForm.controls['confirmpassword'].errors?.['required']){
+                        <span>the field is required</span>
+                        }
+                    </div>
+                }
+
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Register</button>
+    </div>
+
+</form>

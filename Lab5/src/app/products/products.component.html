@@ -1,0 +1,49 @@
+<div class="container">
+  <p>Welcome to our shopping website, start browsing</p>
+
+ 
+  <div class="row text">
+    @for(product of products; track product.id) {
+    <div  class="col-md-3">
+      <div class="card mb-3" style="height: 23rem;"> 
+        <a [routerLink]="['details',product.id]">     <img class="card-img-top" style="height: 10rem;" [src]="product.images[0]" alt="Card image cap"></a>
+        <div class="card-body" style="height: 12rem;">
+          <div class="d-flex justify-content-start align-items-start">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <div>{{ product.price }}$</div>
+          </div>
+          <div class="rating">
+          
+            <span class="fa fa-star {{ product.rating >= 1 ? 'checked' : '' }}"></span>
+            <span class="fa fa-star {{ product.rating >= 2 ? 'checked' : '' }}"></span>
+            <span class="fa fa-star {{ product.rating >= 3 ? 'checked' : '' }}"></span>
+            <span class="fa fa-star {{ product.rating >= 4 ? 'checked' : '' }}"></span>
+            @if(product.rating>=4.5){
+            <span class="fa fa-star-half checked "></span>
+            }
+            @else{
+            <span class="fa fa-star checked"></span>
+            }
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+          <button class="btn rounded"  style="color:rgba(176, 39, 172, 0.751); margin-bottom: 5px; background-color: thistle;" (click)="addToCard(product)"  >Add to Cart</button></div>
+          </div>
+          @if(product.stock>0)
+          {
+          <div>
+            <button class="btn rounded" style="font-size:11px; height: 30px; margin-bottom: 5px; color:rgb(255, 255, 255); background-color: rgb(28, 62, 175);">In Stock</button>
+          </div>
+        }
+        @else{
+          <div>
+          <button class="btn rounded" style="font-size: 11px; height: 30px;   color:rgb(248, 244, 245); background-color: rgb(148, 53, 40);">Out of Stock</button></div>
+        }
+
+        </div>
+      </div>
+    </div>
+    }</div>
+</div>
+
+

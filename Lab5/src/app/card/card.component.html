@@ -1,0 +1,26 @@
+<div class="d-flex align-items-center">
+    <table class="table-bordered" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i = index">
+          <td>{{ item.title }}</td>
+          <td>{{ item.price }}</td>
+          <td>
+            <button (click)="increment(item)">+1</button>
+            <span class="mx-4">{{ counter }}</span>
+            <button (click)="decrement(item)">-1</button>
+          </td>
+          <td><button (click)="removeFromCard(item)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+  <h1>{{calculateTotalItems()}}</h1>
+  </div>
+  
